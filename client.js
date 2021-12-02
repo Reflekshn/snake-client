@@ -14,14 +14,14 @@ const connect = () => {
   conn.on('connect', () => console.log('Successfully connected to the game server'));
   conn.on('connect', () => conn.write('Name: JBO'));
 
-  /* 
+  /*
   // Move the snake up with a small delay
   conn.on('connect', () => {
     setInterval( () => conn.write('Move: up'), 50);
   });
  */
 
-  /* 
+  /*
   conn.on('connect', () => {
     setTimeout(() => conn.write('Move: up'), 500);
   });
