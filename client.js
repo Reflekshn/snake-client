@@ -10,8 +10,13 @@ const connect = () => {
   // Set character encoding to UTF-8
   conn.setEncoding('utf8');
 
-  // Create event listener for when data is received
+  // Event listener for a succesful connection to the server
+  conn.on('connect', () => console.log('Successfully connected to the game server'));
+
+  // Event listener for when data is received from the server
   conn.on('data', data => console.log(data));
+
+  conn.write('Name: JBO');
 
   return conn;
 };
