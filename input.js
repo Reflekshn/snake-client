@@ -33,9 +33,19 @@ const handleUserInput = function(key) {
     connection.write('Move: right');
   }
 
+  // Chat messages
+  if (key === 'u') {
+    connection.write('Say: Snakey is coming to get you');
+  } else if (key === 'i') {
+    connection.write('Say: Hssssssssssssssssssssssss');
+  } else if (key === 'o') {
+    connection.write('Say: I\'m Huuuungry');
+  } else if (key === 'p') {
+    connection.write('Say: Mmmm yum!');
+  }
 };
 
 module.exports = {
   setupInput,
   handleUserInput,
-}
+};
