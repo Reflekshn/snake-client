@@ -1,3 +1,5 @@
+const { keyBindings } = require('./constants');
+
 // Stores the active TCP connection object
 let connection;
 
@@ -8,8 +10,10 @@ const setupInput = function(conn) {
   stdin.setEncoding("utf8");
   stdin.resume();
 
+  // Run handleUserInput when a data event occurs
   stdin.on("data", handleUserInput);
 
+  // Store the conn object in global variable so it can be used below
   connection = conn;
 
   return stdin;
@@ -22,27 +26,8 @@ const handleUserInput = function(key) {
     process.exit();
   }
 
-  // WASD Movement keys
-  if (key === 'w') {
-    connection.write('Move: up');
-  } else if (key === 'a') {
-    connection.write('Move: left');
-  } else if (key === 's') {
-    connection.write('Move: down');
-  } else if (key === 'd') {
-    connection.write('Move: right');
-  }
-
-  // Chat messages
-  if (key === 'u') {
-    connection.write('Say: Snakey is coming to get you');
-  } else if (key === 'i') {
-    connection.write('Say: Hssssssssssssssssssssssss');
-  } else if (key === 'o') {
-    connection.write('Say: I\'m Huuuungry');
-  } else if (key === 'p') {
-    connection.write('Say: Mmmm yum!');
-  }
+  // Process key bindings
+  connection.write(keyBindings[key]);
 };
 
 module.exports = {
